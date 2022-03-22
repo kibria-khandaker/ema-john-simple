@@ -1,0 +1,22 @@
+.shop-container{
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+.products-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:40px;
+    padding-top: 75px;
+    padding-left: 75px;
+    padding-right: 75px;
+}
+.cart-container h3{
+    font-weight: 400;
+font-size: 25px;
+line-height: 30px;
+}
+.cart-container p{
+    font-size: 17px;
+line-height: 20px;
+letter-spacing: 0.005em;
+}
