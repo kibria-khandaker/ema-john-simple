@@ -10,6 +10,9 @@
     padding-left: 75px;
     padding-right: 75px;
 }
+.cart-container{
+    background: rgba(255, 153, 0, 0.3);
+}
 .cart-container h3{
     font-weight: 400;
 font-size: 25px;
