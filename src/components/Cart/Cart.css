@@ -1,0 +1,23 @@
+.cart{
+    position: sticky;
+    top: 0px;
+    padding: 20px;
+}
+.cart-details{
+
+}
+.clear_btn,.review_btn{
+    width: 100%;
+    border: none;
+    padding: 10px;
+    margin-top:10px;
+    border-radius: 5px;
+    font-size: 17px;
+    line-height: 20px;    
+    letter-spacing: 0.005em;    
+    color: #ffffff;
+    background-color: red;
+}
+.review_btn{
+    background-color: rgb(255, 166, 0);
+}
