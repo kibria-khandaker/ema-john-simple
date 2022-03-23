@@ -50,5 +50,5 @@ export {
     addToDb, 
     removeFromDb,
     deleteShoppingCart,
-    getStorCart
+    getStorCart,
 }
