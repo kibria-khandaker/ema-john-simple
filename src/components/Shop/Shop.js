@@ -1,63 +1,59 @@
 import React, { useEffect, useState } from 'react';
+import useProducts from '../../hooks/useProducts';
 import { addToDb, getStorCart } from '../../utilities/fakedb';
 import Product from '../Product/Product';
 import Cart from './../Cart/Cart';
 import './Shop.css';
 
 const Shop = () => {
-const [products, setProducts] = useState([]);
-const [cart, setCart] = useState([]);
+    const [products, setProducts] = useProducts();
+    const [cart, setCart] = useState([]);
 
-useEffect(()=>{
-    fetch('products.json')
-    .then(res=>res.json())
-    .then(data=>setProducts(data))
-},[])
 
-useEffect(()=>{
-    const storedCart = getStorCart();
-    const savedCart = []
-    // console.log(storedCart); // time 49-5-> 6.45
-    for (const id in storedCart){
-        const addedProduct = products.find(product => product.id === id )
-        if (addedProduct) {
-            const quantity = storedCart[id];
-            addedProduct.quantity = quantity;
-            savedCart.push(addedProduct);
-            console.log(addedProduct);
+    useEffect(() => {
+        const storedCart = getStorCart();
+        const savedCart = []
+        // console.log(storedCart); // time 49-5-> 6.45
+        for (const id in storedCart) {
+            const addedProduct = products.find(product => product.id === id)
+            if (addedProduct) {
+                const quantity = storedCart[id];
+                addedProduct.quantity = quantity;
+                savedCart.push(addedProduct);
+                console.log(addedProduct);
+            }
         }
+        setCart(savedCart)
+    }, [products])
+
+
+
+    const handleAddToCart = (selectProduct) => {
+        // console.log(selectProduct);
+        // do not do this: cart.push(selectProduct)
+        let newCart = [];
+        const exists = cart.find(product => product.id === selectProduct.id);
+        if (!exists) {
+            selectProduct.quantity = 1;
+            newCart = [...cart, selectProduct];
+        } else {
+            const rest = cart.filter(product => product.id !== selectProduct.id);
+            exists.quantity = exists.quantity + 1;
+            newCart = [...rest, exists];
+        }
+        // const newCart = [...cart, selectProduct];
+        setCart(newCart)
+        addToDb(selectProduct.id)
     }
-    setCart(savedCart)
-},[products])
-
-
-
-const handleAddToCart=(selectProduct)=>{
-    // console.log(selectProduct);
-    // do not do this: cart.push(selectProduct)
-    let newCart = [];
-    const exists = cart.find(product => product.id === selectProduct.id);
-    if (!exists) {
-        selectProduct.quantity = 1;
-        newCart = [...cart, selectProduct];
-    }else{
-        const rest = cart.filter(product => product.id !== selectProduct.id);
-        exists.quantity = exists.quantity + 1;
-        newCart = [...rest, exists];
-    }
-    // const newCart = [...cart, selectProduct];
-    setCart(newCart)
-    addToDb(selectProduct.id)
-}
     return (
         <div className='shop-container'>
             <div className="products-container">
                 {
-                    products.map(product=><Product
-                            key={product.id} 
-                            product={product}
-                            handleAddToCart={handleAddToCart}
-                         ></Product> )
+                    products.map(product => <Product
+                        key={product.id}
+                        product={product}
+                        handleAddToCart={handleAddToCart}
+                    ></Product>)
                 }
             </div>
             <div className="cart-container">
