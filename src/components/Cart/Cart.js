@@ -1,8 +1,9 @@
 import React from 'react';
-import './Cart.css'
+import './Cart.css';
 
 const Cart = (props) => {
     const {cart}=props;
+    console.log(props);
     console.log(cart);
 
     let total = 0;
@@ -29,7 +30,8 @@ const Cart = (props) => {
                 </div>
                 <h4>Grand Total: ${grandTotal.toFixed(2)}</h4>
                 <button className='clear_btn'>Clear Cart </button><br/>
-                <button className='review_btn'>Review Order </button>
+                {/* <button className='review_btn'>Review Order </button> */}
+                {props.children}
         </div>
     );
 };
