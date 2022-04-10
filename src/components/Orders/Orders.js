@@ -31,7 +31,7 @@ const Orders = () => {
             <div className="cart-container">
                 <Cart cart={cart} >
                     {/* used by useNavigate()  */}
-                    <button onClick={()=>navigate('/inventory')} className='review_btn'> Proceed Checkout </button>
+                    <button onClick={()=>navigate('/shipment')} className='review_btn'> Proceed Shipping </button>
                 </Cart>
             </div>
         </div>
