@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
 
-
 const SignUp = () => {
     //-1--------------------
     const [email, setEmail] = useState('');

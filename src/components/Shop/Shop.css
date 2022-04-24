@@ -1,25 +1,52 @@
-.shop-container{
-    display: grid;
-    grid-template-columns: 4fr 1fr;
+.shop-container {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
 }
-.products-container{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap:40px;
-    padding-top: 75px;
-    padding-left: 75px;
-    padding-right: 75px;
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  padding-top: 75px;
+  padding-left: 75px;
+  padding-right: 75px;
 }
-.cart-container{
-    background: rgba(255, 153, 0, 0.3);
+.cart-container {
+  background: rgba(255, 153, 0, 0.3);
 }
-.cart-container h3{
-    font-weight: 400;
-    font-size: 25px;
-    line-height: 30px;
+.cart-container h3 {
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 30px;
 }
-.cart-container p{
-    font-size: 17px;
-    line-height: 20px;
-    letter-spacing: 0.005em;
+.cart-container p {
+  font-size: 17px;
+  line-height: 20px;
+  letter-spacing: 0.005em;
+}
+
+.pagination {
+  grid-column: 1 / -1;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 55px;
+}
+.pagination button {
+  margin: 5px;
+  padding: 4px 11px;
+  background-color: #ffe0b2;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  transition: all 0.2s;
+}
+
+.pagination button:hover {
+  /* background-color: #ebbf7e; */
+  background-color: red;
+  color: #fff;
+}
+
+.pagination .selected {
+  background-color: rgb(17, 0, 255);
+  color: #fff;
 }
