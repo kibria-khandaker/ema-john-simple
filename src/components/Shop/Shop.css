@@ -47,6 +47,20 @@
 }
 
 .pagination .selected {
-  background-color: rgb(17, 0, 255);
+  background-color: red;
   color: #fff;
+}
+.select_option {
+  padding: 3px;
+  background-color: red;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  color: #fff;
+}
+select.select_option option {
+  background-color: green;
+  border: none;
+  border-radius: 5px;
+  font-size: 13px;
 }

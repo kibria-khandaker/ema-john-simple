@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 // import useProducts from '../../hooks/useProducts';
-import { addToDb, getStorCart } from '../../utilities/fakedb';
+import { addToDb } from '../../utilities/fakedb';
 import Product from '../Product/Product';
+import useCart from './../../hooks/useCart';
 import Cart from './../Cart/Cart';
 import './Shop.css';
-import useCart from './../../hooks/useCart';
 
 const Shop = () => {
     // const [products, setProducts] = useProducts();
     // const [cart, setCart] = useState([]); // 
     const [cart, setCart] = useCart();
-    const [pageCount, setPageCount] = useState(0);
     const [page, setPage] = useState(0);
-    const [size, setSize] = useState(10);
-
+    const [size, setSize] = useState(9);
+    
     // ---- hook theke use na kore niya ese ekhane use kortechi.
+
+    const [pageCount, setPageCount] = useState(0);
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -30,10 +31,11 @@ const Shop = () => {
             .then(res => res.json())
             .then(data => {
                 const count = data.count;
-                const pages = Math.ceil(count / 10);
+                const pages = Math.ceil(count / size);
                 setPageCount(pages);
             })
-    }, [])
+    }, [page, size])
+
 
     // useEffect(() => {
     //     const storedCart = getStorCart();
@@ -89,11 +91,16 @@ const Shop = () => {
                     }
 
                     {/* {size} */}
-                    <select defaultValue={'10'} onChange={e => setSize(e.target.value)} >
-                        <option value="5">5</option>
-                        <option value="10" > 10 </option>
+                    <select className='select_option' defaultValue={'9'} onChange={e => setSize(e.target.value)} >
+                        <option value="6">6</option>
+                        <option value="9">9</option>
                         <option value="15">15</option>
-                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="30">30</option>
+                        <option value="45">45</option>
+                        <option value="60">60</option>
+                        <option value="90">90</option>
+                        <option value="100">100</option>
                     </select>
                 </div>
             </div>
